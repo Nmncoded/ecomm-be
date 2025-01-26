@@ -26,14 +26,24 @@ export const getAllProducts = async (req, res) => {
 
 export const addProduct = async (req, res) => {
   try {
-    console.log('inside addProduct api')
     const { name, price, brand, description, category, image_url } = req.body;
 
-    console.log(req.body,req?.rootUser);
+    const data = await prisma.product.create({
+      data: {
+        name,
+        price,
+        brand,
+        description,
+        category,
+        image_url,
+        user_id: req?.rootUser?.id
+      }
+    });
 
     res.json({ success: true, message: 'Product successfully added.' });
   } catch (error) {
-    res.status(500).json({ error: 'addProduct failed' });
+    console.log(error)
+    res.status(500).json({ error: 'addProduct failed',err });
   }
 };
 

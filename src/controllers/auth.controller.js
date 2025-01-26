@@ -41,7 +41,6 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    // console.log('inside login api')
     const { email, password, role_id } = req.body;
     
     const user = await prisma.user.findFirst({ where: { email },select: { id: true, email: true, role_id: true,contact_no: true,name: true, password: true } });

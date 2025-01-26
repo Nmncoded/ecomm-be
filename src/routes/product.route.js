@@ -4,8 +4,8 @@ import { addProductValidation } from '../validations/product.validation.js';
 import { authenticateToken } from '../middleware/auth.middleware.js';
 const productRouter = express.Router();
 
-productRouter.post('/product', addProductValidation ,addProduct );
+productRouter.post('/product', addProductValidation, authenticateToken , addProduct );
 
-productRouter.get('/products' , authenticateToken ,getAllProducts );
+productRouter.get('/products' , authenticateToken , getAllProducts );
 
 export default productRouter

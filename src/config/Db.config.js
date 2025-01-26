@@ -9,7 +9,7 @@ const rolesData = [{ name: "ADMIN" }, { name: "USER" }];
 async function main() {
   try {
 
-    console.log("Start seeding categories...");
+    // console.log("Start seeding categories...");
 
     for (const role of rolesData) {
       await prisma.role.upsert({
@@ -21,7 +21,7 @@ async function main() {
       });
     }
 
-    console.log("Seeding categories completed.");
+    // console.log("Seeding categories completed.");
   } catch (error) {
     console.error("Error during migration or seeding:", error);
     throw error;

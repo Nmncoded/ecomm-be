@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import authRouter from './src/routes/auth.route.js';
+import productRouter from "./src/routes/product.route.js";
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use(`/auth/${process.env.VERSION}`, authRouter);
+app.use(`/${process.env.VERSION}`, productRouter);
 
 
 process.on("unhandledRejection", (err) => {
